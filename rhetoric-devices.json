@@ -1,0 +1,226 @@
+{
+  "devices": [
+    {
+      "id": "anaphora",
+      "name": "Anaphora",
+      "category": "repetition",
+      "definition": "Repetition of a word or phrase at the beginning of successive clauses or sentences.",
+      "example": "We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets, we shall fight in the hills.",
+      "exampleSource": "Winston Churchill",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "epistrophe",
+      "name": "Epistrophe",
+      "category": "repetition",
+      "definition": "Repetition of a word or phrase at the end of successive clauses or sentences.",
+      "example": "When I was a child, I spoke as a child, I understood as a child, I thought as a child.",
+      "exampleSource": "1 Corinthians 13:11",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "epizeuxis",
+      "name": "Epizeuxis",
+      "category": "repetition",
+      "definition": "Immediate repetition of a word for emphasis.",
+      "example": "Never, never, never give up.",
+      "exampleSource": "Winston Churchill",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "diacope",
+      "name": "Diacope",
+      "category": "repetition",
+      "definition": "Repetition of a word with one or more words in between.",
+      "example": "Bond. James Bond.",
+      "exampleSource": "Ian Fleming",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "anadiplosis",
+      "name": "Anadiplosis",
+      "category": "repetition",
+      "definition": "Repetition of the last word of one clause at the beginning of the next.",
+      "example": "Fear leads to anger. Anger leads to hate. Hate leads to suffering.",
+      "exampleSource": "Star Wars",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "symploce",
+      "name": "Symploce",
+      "category": "repetition",
+      "definition": "Combination of anaphora and epistrophe, repeating words at both the beginning and end of successive clauses.",
+      "example": "Let us never negotiate out of fear. But let us never fear to negotiate.",
+      "exampleSource": "John F. Kennedy",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "polyptoton",
+      "name": "Polyptoton",
+      "category": "repetition",
+      "definition": "Repetition of words derived from the same root but with different forms or endings.",
+      "example": "I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.",
+      "exampleSource": "Martin Luther King Jr.",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "alliteration",
+      "name": "Alliteration",
+      "category": "sound",
+      "definition": "Repetition of the same consonant sound at the beginning of neighboring words.",
+      "example": "Peter Piper picked a peck of pickled peppers.",
+      "exampleSource": "Traditional tongue twister",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "assonance",
+      "name": "Assonance",
+      "category": "sound",
+      "definition": "Repetition of vowel sounds in neighboring words.",
+      "example": "The rain in Spain stays mainly in the plain.",
+      "exampleSource": "My Fair Lady",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "consonance",
+      "name": "Consonance",
+      "category": "sound",
+      "definition": "Repetition of consonant sounds in neighboring words, not necessarily at the beginning.",
+      "example": "He struck a streak of bad luck.",
+      "exampleSource": "Common usage",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "sibilance",
+      "name": "Sibilance",
+      "category": "sound",
+      "definition": "Repetition of 's' or 'sh' sounds to create a hissing effect.",
+      "example": "The silken, sad, uncertain rustling of each purple curtain.",
+      "exampleSource": "Edgar Allan Poe",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "onomatopoeia",
+      "name": "Onomatopoeia",
+      "category": "sound",
+      "definition": "Words that imitate the sounds they describe.",
+      "example": "The bees buzzed, the brook babbled, and the wind whispered.",
+      "exampleSource": "Common usage",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "tricolon",
+      "name": "Tricolon",
+      "category": "structure",
+      "definition": "A series of three parallel words, phrases, or clauses.",
+      "example": "Veni, vidi, vici. (I came, I saw, I conquered.)",
+      "exampleSource": "Julius Caesar",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "parallelism",
+      "name": "Parallelism",
+      "category": "structure",
+      "definition": "Use of similar grammatical structures in successive phrases or clauses.",
+      "example": "Ask not what your country can do for you—ask what you can do for your country.",
+      "exampleSource": "John F. Kennedy",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "isocolon",
+      "name": "Isocolon",
+      "category": "structure",
+      "definition": "Parallel structures of equal length, creating rhythm and balance.",
+      "example": "The bigger they are, the harder they fall.",
+      "exampleSource": "Traditional proverb",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "polysyndeton",
+      "name": "Polysyndeton",
+      "category": "structure",
+      "definition": "Deliberate use of many conjunctions in close succession.",
+      "example": "And the water, and the sky, and the trees, and the birds all seemed to rejoice.",
+      "exampleSource": "Common usage",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "asyndeton",
+      "name": "Asyndeton",
+      "category": "structure",
+      "definition": "Omission of conjunctions between parts of a sentence.",
+      "example": "I came, I saw, I conquered.",
+      "exampleSource": "Julius Caesar",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "rhetorical_question",
+      "name": "Rhetorical Question",
+      "category": "emphasis",
+      "definition": "A question asked for effect or to make a point rather than to get an answer.",
+      "example": "If you prick us, do we not bleed? If you tickle us, do we not laugh?",
+      "exampleSource": "William Shakespeare",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "exclamation",
+      "name": "Exclamation",
+      "category": "emphasis",
+      "definition": "A sudden cry or remark expressing surprise, strong emotion, or pain.",
+      "example": "O Romeo, Romeo! Wherefore art thou Romeo?",
+      "exampleSource": "William Shakespeare",
+      "implemented": false,
+      "patternBased": true
+    },
+    {
+      "id": "ellipsis",
+      "name": "Ellipsis",
+      "category": "emphasis",
+      "definition": "Omission of words or trailing off to create suspense or imply something left unsaid.",
+      "example": "But I thought you said...",
+      "exampleSource": "Common usage",
+      "implemented": false,
+      "patternBased": true
+    }
+  ],
+  "categories": [
+    {
+      "id": "repetition",
+      "name": "Repetition Devices",
+      "description": "Devices that use repeated words, phrases, or structures for emphasis and rhythm"
+    },
+    {
+      "id": "sound",
+      "name": "Sound Devices",
+      "description": "Devices based on phonetic patterns and sounds that create auditory effects"
+    },
+    {
+      "id": "structure",
+      "name": "Structural Devices",
+      "description": "Devices that organize ideas in particular patterns for clarity and impact"
+    },
+    {
+      "id": "emphasis",
+      "name": "Emphasis Devices",
+      "description": "Devices that draw attention and create emotional impact through questions, exclamations, and pauses"
+    }
+  ]
+}

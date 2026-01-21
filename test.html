@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorgias Test Suite</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .test-section {
+            background-color: #16213e;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #2d2d44;
+        }
+
+        .test-section h2 {
+            color: #f9a826;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .test-case {
+            background-color: #1a1a2e;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #666;
+        }
+
+        .test-case.pass {
+            border-left-color: #4caf50;
+        }
+
+        .test-case.fail {
+            border-left-color: #e94560;
+        }
+
+        .test-name {
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 5px;
+        }
+
+        .test-result {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+        }
+
+        .test-result.pass {
+            color: #4caf50;
+        }
+
+        .test-result.fail {
+            color: #e94560;
+        }
+
+        .test-input {
+            background-color: #0f1624;
+            padding: 10px;
+            border-radius: 3px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #9b59b6;
+        }
+
+        .test-expected {
+            color: #f9a826;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        .test-summary {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1), rgba(155, 89, 182, 0.1));
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .test-summary h1 {
+            color: #f9a826;
+            margin-bottom: 15px;
+        }
+
+        .test-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 15px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-value.pass {
+            color: #4caf50;
+        }
+
+        .stat-value.fail {
+            color: #e94560;
+        }
+
+        .stat-value.total {
+            color: #f9a826;
+        }
+
+        .stat-label {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .run-tests-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #e94560 0%, #9b59b6 100%);
+            border: none;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .run-tests-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-summary">
+            <h1>GORGIAS TEST SUITE</h1>
+            <p style="color: #b0b0b0;">Comprehensive testing for rhetorical device detectors</p>
+            <button class="run-tests-btn" onclick="runAllTests()">RUN ALL TESTS</button>
+            <div class="test-stats" id="testStats" style="display: none;">
+                <div class="stat">
+                    <div class="stat-value pass" id="passCount">0</div>
+                    <div class="stat-label">PASSED</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value fail" id="failCount">0</div>
+                    <div class="stat-label">FAILED</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value total" id="totalCount">0</div>
+                    <div class="stat-label">TOTAL</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="testResults"></div>
+
+        <a href="index.html" class="back-link" style="margin-top: 30px;">Back to Home</a>
+    </div>
+
+    <script type="module" src="test-suite.js"></script>
+</body>
+</html>

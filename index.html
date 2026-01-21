@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorgias - Rhetorical Device Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">GORGIAS</h1>
+            <p class="subtitle">RHETORICAL DEVICE ANALYZER</p>
+            <p class="version">v0.1.0</p>
+        </header>
+
+        <div class="description">
+            Gorgias identifies rhetorical devices in speeches and persuasive texts. Analyze famous speeches or your own writing to discover patterns of repetition, sound, and structure that make language memorable and effective.
+            <br><br>
+            <em>Inspired by <a href="https://havelock.ai" target="_blank" style="color: #f9a826; text-decoration: none;">havelock.ai</a></em>
+        </div>
+
+        <div class="input-section">
+            <label class="input-label">ENTER OR PASTE YOUR TEXT</label>
+
+            <div class="samples">
+                <button class="sample-btn" data-sample="declaration">Declaration of Independence</button>
+                <button class="sample-btn" data-sample="gettysburg">Gettysburg Address</button>
+                <button class="sample-btn" data-sample="dream">I Have a Dream</button>
+                <button class="sample-btn" data-sample="churchill">We Shall Fight</button>
+            </div>
+
+            <textarea id="textInput" placeholder="We will fight on the beaches, we will fight on the landing grounds, we will fight in the fields and in the streets..."></textarea>
+        </div>
+
+        <button class="analyze-btn" id="analyzeBtn">ANALYZE</button>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="#" class="back-link" style="border: none; color: #f9a826;">Back to Home</a>
+        </div>
+    </div>
+
+    <script type="module" src="mock-api.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

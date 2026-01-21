@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Test - Gorgias</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .test-panel {
+            background-color: #16213e;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            border: 1px solid #2d2d44;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #1a1a2e;
+            border-radius: 5px;
+            border-left: 4px solid #666;
+        }
+        .test-result.pass {
+            border-left-color: #4caf50;
+            color: #4caf50;
+        }
+        .test-result.fail {
+            border-left-color: #e94560;
+            color: #e94560;
+        }
+        .test-button {
+            margin: 10px 5px;
+            padding: 10px 20px;
+            background-color: #9b59b6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .test-button:hover {
+            background-color: #e94560;
+        }
+        code {
+            background-color: #0f1624;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #f9a826;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">BUTTON TEST</h1>
+            <p class="subtitle">Testing Sample Button Functionality</p>
+        </header>
+
+        <div class="test-panel">
+            <h2 style="color: #f9a826; margin-bottom: 20px;">Interactive Test</h2>
+
+            <p style="color: #e0e0e0; margin-bottom: 15px;">
+                Click each button below and verify the textarea updates:
+            </p>
+
+            <div class="samples">
+                <button class="sample-btn test-button" data-sample="declaration">Declaration</button>
+                <button class="sample-btn test-button" data-sample="gettysburg">Gettysburg</button>
+                <button class="sample-btn test-button" data-sample="dream">Dream</button>
+                <button class="sample-btn test-button" data-sample="churchill">Churchill</button>
+            </div>
+
+            <textarea id="textInput" style="width: 100%; height: 150px; margin: 20px 0; padding: 15px; background-color: #1a1a2e; color: #e0e0e0; border: 1px solid #3d3d5c; border-radius: 5px; font-family: inherit;"></textarea>
+
+            <button class="test-button" onclick="runTests()">RUN AUTOMATED TESTS</button>
+
+            <div id="testResults" style="margin-top: 20px;"></div>
+        </div>
+
+        <a href="index.html" class="back-link">Back to Home</a>
+    </div>
+
+    <script type="module">
+        // Import sample texts
+        const SAMPLE_TEXTS = {
+            declaration: `When in the Course of human events, it becomes necessary for one people to dissolve the political bands which have connected them with another, and to assume among the powers of the earth, the separate and equal station to which the Laws of Nature and of Nature's God entitle them, a decent respect to the opinions of mankind requires that they should declare the causes which impel them to the separation.
+
+We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness.`,
+
+            gettysburg: `Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal. Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure.`,
+
+            dream: `I have a dream that one day this nation will rise up and live out the true meaning of its creed: "We hold these truths to be self-evident, that all men are created equal." I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.`,
+
+            churchill: `We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets, we shall fight in the hills; we shall never surrender.`
+        };
+
+        // Wait for DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded');
+
+            const textInput = document.getElementById('textInput');
+            const sampleBtns = document.querySelectorAll('.sample-btn');
+
+            console.log('Found', sampleBtns.length, 'sample buttons');
+            console.log('Textarea element:', textInput ? 'Found' : 'NOT FOUND');
+
+            // Add event listeners
+            sampleBtns.forEach((btn, index) => {
+                console.log(`Setting up button ${index}:`, btn.getAttribute('data-sample'));
+
+                btn.addEventListener('click', () => {
+                    const sample = btn.getAttribute('data-sample');
+                    console.log('Button clicked:', sample);
+
+                    if (SAMPLE_TEXTS[sample]) {
+                        textInput.value = SAMPLE_TEXTS[sample];
+                        console.log('Text set, length:', textInput.value.length);
+                    } else {
+                        console.error('Sample not found:', sample);
+                    }
+                });
+            });
+
+            // Make runTests available globally
+            window.runTests = () => {
+                const resultsDiv = document.getElementById('testResults');
+                resultsDiv.innerHTML = '<h3 style="color: #f9a826;">Test Results:</h3>';
+
+                let allPassed = true;
+
+                // Test 1: Check DOM elements exist
+                const test1Pass = textInput !== null && sampleBtns.length === 4;
+                resultsDiv.innerHTML += `
+                    <div class="test-result ${test1Pass ? 'pass' : 'fail'}">
+                        ${test1Pass ? '✓' : '✗'} DOM Elements:
+                        Textarea: ${textInput ? 'Found' : 'Missing'},
+                        Buttons: ${sampleBtns.length}/4
+                    </div>
+                `;
+                allPassed = allPassed && test1Pass;
+
+                // Test 2: Check sample texts are defined
+                const test2Pass = Object.keys(SAMPLE_TEXTS).length === 4;
+                resultsDiv.innerHTML += `
+                    <div class="test-result ${test2Pass ? 'pass' : 'fail'}">
+                        ${test2Pass ? '✓' : '✗'} Sample Texts Defined: ${Object.keys(SAMPLE_TEXTS).length}/4
+                    </div>
+                `;
+                allPassed = allPassed && test2Pass;
+
+                // Test 3: Test each button programmatically
+                let buttonTestsPassed = 0;
+                ['declaration', 'gettysburg', 'dream', 'churchill'].forEach(sample => {
+                    textInput.value = '';
+                    const btn = document.querySelector(`[data-sample="${sample}"]`);
+                    if (btn) {
+                        btn.click();
+                        const testPassed = textInput.value.length > 0;
+                        resultsDiv.innerHTML += `
+                            <div class="test-result ${testPassed ? 'pass' : 'fail'}">
+                                ${testPassed ? '✓' : '✗'} Button: <code>${sample}</code> -
+                                ${testPassed ? `Loaded ${textInput.value.length} chars` : 'Failed to load'}
+                            </div>
+                        `;
+                        if (testPassed) buttonTestsPassed++;
+                    }
+                });
+                const test3Pass = buttonTestsPassed === 4;
+                allPassed = allPassed && test3Pass;
+
+                // Summary
+                resultsDiv.innerHTML += `
+                    <div class="test-result ${allPassed ? 'pass' : 'fail'}" style="margin-top: 20px; font-weight: 600; font-size: 1.1rem;">
+                        ${allPassed ? '✓ ALL TESTS PASSED' : '✗ SOME TESTS FAILED'}
+                    </div>
+                `;
+            };
+
+            console.log('Setup complete!');
+        });
+    </script>
+</body>
+</html>
