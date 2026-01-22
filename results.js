@@ -1,7 +1,7 @@
 // Load device definitions from JSON
 let deviceDefinitions = {};
 
-fetch('rhetoric-devices.json')
+fetch('/rhetoric-devices.json')
     .then(r => r.json())
     .then(data => {
         deviceDefinitions = data.devices.reduce((acc, device) => {
