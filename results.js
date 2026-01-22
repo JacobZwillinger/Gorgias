@@ -20,12 +20,26 @@ if (!analysisData) {
 } else {
     const result = JSON.parse(analysisData);
     renderResults(result);
-    renderMarkers(result.markers || []);
+
+    // Convert summary to markers format
+    const markers = {};
+    if (result.devices && result.devices.length > 0) {
+        result.devices.forEach(device => {
+            const category = device.category || 'other';
+            if (!markers[category]) {
+                markers[category] = {};
+            }
+            markers[category][device.device] = (markers[category][device.device] || 0) + 1;
+        });
+    }
+
+    renderMarkers(markers);
 }
 
 function renderResults(result) {
     const container = document.getElementById('analyzedText');
-    const { originalText, highlights } = result;
+    const originalText = result.text || result.originalText;
+    const highlights = result.devices || result.highlights || [];
 
     if (highlights.length === 0) {
         container.textContent = originalText;
