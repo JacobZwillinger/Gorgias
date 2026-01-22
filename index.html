@@ -20,6 +20,8 @@
         <div class="description">
             Gorgias identifies rhetorical devices in speeches and persuasive texts. Analyze famous speeches or your own writing to discover patterns of repetition, sound, and structure that make language memorable and effective.
             <br><br>
+            <a href="guide.html" style="color: #f9a826; text-decoration: none; font-weight: 600;">→ Rhetorical Device Guide</a>
+            <br><br>
             <em>Inspired by <a href="https://havelock.ai" target="_blank" style="color: #f9a826; text-decoration: none;">havelock.ai</a></em>
         </div>
 
@@ -31,6 +33,40 @@
                 <button class="sample-btn" data-sample="gettysburg">Gettysburg Address</button>
                 <button class="sample-btn" data-sample="dream">I Have a Dream</button>
                 <button class="sample-btn" data-sample="churchill">We Shall Fight</button>
+            </div>
+
+            <div style="margin-top: 16px; margin-bottom: 12px;">
+                <label for="deviceExample" style="display: block; margin-bottom: 8px; color: #f9a826; font-size: 12px; font-weight: 600; letter-spacing: 0.5px;">OR SELECT A DEVICE EXAMPLE:</label>
+                <select id="deviceExample" style="width: 100%; padding: 10px; background: #2a2a2a; color: #e0e0e0; border: 1px solid #444; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 14px; cursor: pointer;">
+                    <option value="">-- Select a rhetorical device --</option>
+                    <optgroup label="TIER 1: High-Impact">
+                        <option value="alliteration">Alliteration</option>
+                        <option value="assonance">Assonance</option>
+                        <option value="consonance">Consonance</option>
+                        <option value="anaphora">Anaphora</option>
+                        <option value="epistrophe">Epistrophe</option>
+                        <option value="epizeuxis">Epizeuxis</option>
+                        <option value="anadiplosis">Anadiplosis</option>
+                        <option value="isocolon">Isocolon</option>
+                        <option value="tricolon">Tricolon</option>
+                        <option value="antithesis">Antithesis</option>
+                        <option value="chiasmus">Chiasmus</option>
+                        <option value="rhetorical-question">Rhetorical Question</option>
+                    </optgroup>
+                    <optgroup label="TIER 2: Medium Complexity">
+                        <option value="polyptoton">Polyptoton</option>
+                        <option value="antimetabole">Antimetabole</option>
+                        <option value="symploce">Symploce</option>
+                        <option value="asyndeton">Asyndeton</option>
+                        <option value="polysyndeton">Polysyndeton</option>
+                    </optgroup>
+                    <optgroup label="TIER 3: Semantic/Complex">
+                        <option value="paradox">Paradox</option>
+                        <option value="oxymoron">Oxymoron</option>
+                        <option value="irony">Irony</option>
+                        <option value="antanaclasis">Antanaclasis</option>
+                    </optgroup>
+                </select>
             </div>
 
             <textarea id="textInput" placeholder="We will fight on the beaches, we will fight on the landing grounds, we will fight in the fields and in the streets..."></textarea>

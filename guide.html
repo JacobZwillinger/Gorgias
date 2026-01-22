@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhetorical Device Guide - Gorgias</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .tier {
+            margin-bottom: 50px;
+        }
+        .tier-header {
+            color: #f9a826;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f9a826;
+            padding-bottom: 10px;
+        }
+        .device {
+            background: rgba(249, 168, 38, 0.05);
+            border-left: 4px solid #f9a826;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .device-name {
+            color: #f9a826;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .device-definition {
+            color: #e0e0e0;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .device-example {
+            color: #b0b0b0;
+            font-style: italic;
+            margin-bottom: 12px;
+            padding-left: 16px;
+            border-left: 2px solid rgba(249, 168, 38, 0.3);
+        }
+        .device-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+        .meta-item {
+            color: #888;
+        }
+        .meta-label {
+            color: #f9a826;
+            font-weight: 600;
+        }
+        .difficulty {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .difficulty-easy { background: rgba(0, 255, 0, 0.2); color: #0f0; }
+        .difficulty-medium { background: rgba(249, 168, 38, 0.2); color: #f9a826; }
+        .difficulty-hard { background: rgba(255, 0, 0, 0.2); color: #f66; }
+        .difficulty-very-hard { background: rgba(139, 0, 0, 0.3); color: #ff6b6b; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">RHETORICAL DEVICE GUIDE</h1>
+            <p class="subtitle">COMPREHENSIVE DETECTION REFERENCE</p>
+        </header>
+
+        <div style="text-align: center; margin-bottom: 30px;">
+            <a href="index.html" class="back-link">Back to Analyzer</a>
+        </div>
+
+        <div class="guide-container">
+            <!-- TIER 1 -->
+            <div class="tier">
+                <h2 class="tier-header">TIER 1: High-Impact, Detectable (Start Here)</h2>
+
+                <div class="device">
+                    <div class="device-name">Alliteration</div>
+                    <div class="device-definition">Repetition of initial consonant sounds in successive or neighboring words.</div>
+                    <div class="device-example">"Peter Piper picked a peck of pickled peppers"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Phonetic algorithms (Metaphone/Soundex)</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Silent letters, homophones, word boundary detection</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Assonance</div>
+                    <div class="device-definition">Repetition of vowel sounds in stressed syllables of nearby words.</div>
+                    <div class="device-example">"The rain in Spain stays mainly in the plain"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Phonetic analysis + stress detection</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Determining stress patterns, vowel pronunciation variability</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Consonance</div>
+                    <div class="device-definition">Repetition of consonant sounds with different vowels in nearby words.</div>
+                    <div class="device-example">"The lumpy, bumpy road"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Phonetic pattern matching</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Distinguishing from alliteration, position independence</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Anaphora</div>
+                    <div class="device-definition">Repetition of the same word or phrase at the beginning of successive clauses or sentences.</div>
+                    <div class="device-example">"We shall fight on the beaches. We shall fight on the landing grounds. We shall fight in the fields."</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> NLP parsing + pattern matching on sentence/clause starts</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Clause boundary detection, determining meaningful repetition length</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Epistrophe</div>
+                    <div class="device-definition">Repetition of the same word or phrase at the end of successive clauses or sentences.</div>
+                    <div class="device-example">"...government of the people, by the people, for the people"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> NLP parsing + pattern matching on sentence/clause ends</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Similar to anaphora but at clause endings</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Epizeuxis</div>
+                    <div class="device-definition">Immediate repetition of a word with no others between, for emphasis or emotion.</div>
+                    <div class="device-example">"Never, never, never give up"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Simple token matching (adjacent word detection)</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Minimal - very straightforward pattern</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Anadiplosis</div>
+                    <div class="device-definition">Repetition where the last word of one clause becomes the first word of the next.</div>
+                    <div class="device-example">"Fear leads to anger. Anger leads to hate. Hate leads to suffering."</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Clause parsing + end-to-start matching</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Handling punctuation, determining clause boundaries</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Isocolon</div>
+                    <div class="device-definition">A series of parallel clauses or phrases of approximately equal length.</div>
+                    <div class="device-example">"Veni, vidi, vici" (I came, I saw, I conquered)</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> NLP parsing + length comparison + structure matching</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Defining "equal length" (words vs syllables), detecting parallel structure</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Tricolon</div>
+                    <div class="device-definition">Three parallel elements of approximately equal length appearing in succession.</div>
+                    <div class="device-example">"Government of the people, by the people, for the people"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Isocolon detection + counting (must be exactly 3)</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Same as isocolon, plus enforcing exactly three elements</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Antithesis</div>
+                    <div class="device-definition">Juxtaposition of contrasting ideas in parallel grammatical structures.</div>
+                    <div class="device-example">"One small step for man, one giant leap for mankind"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-hard">HARD</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Parallel structure detection + semantic opposition analysis</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Identifying semantic opposites (requires word embeddings or antonym database)</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Chiasmus</div>
+                    <div class="device-definition">Reversed grammatical structure in successive phrases or clauses (ABBA pattern).</div>
+                    <div class="device-example">"Ask not what your country can do for you—ask what you can do for your country"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-hard">HARD</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Deep syntactic parsing + structure reversal detection</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Requires accurate POS tagging, handling syntactic variations</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Rhetorical Question</div>
+                    <div class="device-definition">A question asked for effect or emphasis rather than to obtain information.</div>
+                    <div class="device-example">"Is the pope Catholic?"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Question detection + heuristics (negative tags, obvious answers)</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Context-dependent, requires understanding of implied answers</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIER 2 -->
+            <div class="tier">
+                <h2 class="tier-header">TIER 2: Medium Complexity (Add Later)</h2>
+
+                <div class="device">
+                    <div class="device-name">Polyptoton</div>
+                    <div class="device-definition">Repetition of words derived from the same root but with different forms.</div>
+                    <div class="device-example">"The strong strengthens the strength"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Lemmatization + root word matching</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Accurate lemmatization, distinguishing from simple word repetition</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Antimetabole</div>
+                    <div class="device-definition">Repetition of words in reverse order in successive clauses.</div>
+                    <div class="device-example">"Fair is foul, and foul is fair"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Word sequence matching + reversal detection</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Distinguishing from chiasmus (word vs structure reversal)</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Symploce</div>
+                    <div class="device-definition">Combination of anaphora and epistrophe—repetition at both beginning and end.</div>
+                    <div class="device-example">"When there is talk of hatred, let us stand up and talk against it. When there is talk of violence, let us stand up and talk against it."</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Combined anaphora + epistrophe detection</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Must detect both patterns simultaneously</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Asyndeton</div>
+                    <div class="device-definition">Omission of conjunctions between series elements, creating a rushed or emphatic effect.</div>
+                    <div class="device-example">"I came, I saw, I conquered"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> List detection + conjunction absence checking</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Distinguishing intentional omission from normal comma lists</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Polysyndeton</div>
+                    <div class="device-definition">Deliberate use of many conjunctions for effect (opposite of asyndeton).</div>
+                    <div class="device-example">"...and the wind and the rain and the cold"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Conjunction counting in series</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Determining threshold for "excessive" conjunctions</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIER 3 -->
+            <div class="tier">
+                <h2 class="tier-header">TIER 3: Semantic/Complex (Probably Too Hard)</h2>
+
+                <div class="device">
+                    <div class="device-name">Paradox</div>
+                    <div class="device-definition">A seemingly contradictory statement that contains a measure of truth.</div>
+                    <div class="device-example">"Less is more"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-very-hard">VERY HARD</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Semantic analysis + logical contradiction detection</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Requires deep semantic understanding and world knowledge</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Oxymoron</div>
+                    <div class="device-definition">Adjacent words with seemingly contradictory meanings.</div>
+                    <div class="device-example">"Deafening silence", "jumbo shrimp"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-hard">HARD</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Semantic opposition detection on adjacent words</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Requires semantic database, distinguishing from metaphorical language</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Irony</div>
+                    <div class="device-definition">Using language to convey meaning opposite to the literal interpretation.</div>
+                    <div class="device-example">"What a beautiful day!" (said during a thunderstorm)</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-very-hard">VERY HARD</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Context analysis + sentiment/reality mismatch detection</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Requires external context, tone detection, cultural knowledge</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Antanaclasis</div>
+                    <div class="device-definition">Repetition of a word in two different senses (pun on meanings).</div>
+                    <div class="device-example">"If we don't hang together, we'll hang separately"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-very-hard">VERY HARD</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Word sense disambiguation + multiple meaning detection</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Requires comprehensive dictionary with multiple definitions, context analysis</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIER 4 -->
+            <div class="tier">
+                <h2 class="tier-header">TIER 4: Impractical (Reference Only)</h2>
+
+                <div class="device">
+                    <div class="device-name">Homoioptoton</div>
+                    <div class="device-definition">Repetition of similar case endings in adjacent words (Greek/Latin).</div>
+                    <div class="device-example">"Tempora mutantur, nos et mutamur in illis"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-very-hard">VERY HARD</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Morphological analysis of inflected languages</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> English lacks case system; requires classical language support</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Homoioteleuton</div>
+                    <div class="device-definition">Similarity of word endings in adjacent or parallel words.</div>
+                    <div class="device-example">"Surely it is destruction, not construction, at which you aim"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-hard">HARD</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Suffix pattern matching</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Very common in English (-tion, -ly), hard to distinguish from coincidence</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Paroemion</div>
+                    <div class="device-definition">Extreme alliteration where every word begins with the same consonant.</div>
+                    <div class="device-example">"Pourquoi pas produire promptement ce procès?" (French example)</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Same as alliteration but stricter (100% match rate)</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Extremely rare in natural speech, not worth detecting</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Mesarchia</div>
+                    <div class="device-definition">Repetition of words at the beginning and middle of successive sentences.</div>
+                    <div class="device-example">"Time heals all wounds. Time is what we have. Time will tell."</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Position-based repetition detection</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Defining "middle" is vague, rarely used consciously</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Mesodiplosis</div>
+                    <div class="device-definition">Repetition of the same word(s) in the middle of successive sentences.</div>
+                    <div class="device-example">"The art of peace begins in the heart. Victory in war begins in the heart."</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Middle-position word matching</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Too subtle, low rhetorical impact</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Metathesis</div>
+                    <div class="device-definition">Transposition of letters within a word.</div>
+                    <div class="device-example">"Aks" instead of "ask"</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Letter-order comparison against dictionary</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Usually considered an error, not a rhetorical device</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Tmesis</div>
+                    <div class="device-definition">Inserting a word between parts of a compound word.</div>
+                    <div class="device-example">"A whole nother story" (instead of "another")</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Compound word database + insertion detection</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Very rare, requires comprehensive compound word list</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Hysteron Proteron</div>
+                    <div class="device-definition">Reversing the natural chronological order of events.</div>
+                    <div class="device-example">"I die, I faint, I fail" (death comes after fainting/failing)</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-very-hard">VERY HARD</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Temporal reasoning + world knowledge</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Requires understanding of real-world event sequences</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Commoratio</div>
+                    <div class="device-definition">Dwelling repeatedly on one's strongest argument.</div>
+                    <div class="device-example">(Conceptual rather than structural—entire passages)</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-very-hard">VERY HARD</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Argument structure analysis + topic modeling</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Requires discourse-level understanding, not sentence-level</div>
+                    </div>
+                </div>
+
+                <div class="device">
+                    <div class="device-name">Exergasia</div>
+                    <div class="device-definition">Repeating the same thought using multiple rhetorical figures.</div>
+                    <div class="device-example">(Meta-device about using other devices)</div>
+                    <div class="device-meta">
+                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-very-hard">VERY HARD</span></div>
+                        <div class="meta-item"><span class="meta-label">Method:</span> Requires detecting all other devices first + semantic similarity</div>
+                        <div class="meta-item"><span class="meta-label">Challenges:</span> Meta-level analysis, circular dependency</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; margin-bottom: 60px;">
+            <a href="index.html" class="back-link">Back to Analyzer</a>
+        </div>
+    </div>
+</body>
+</html>

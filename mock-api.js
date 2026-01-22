@@ -1,19 +1,11 @@
 // Rhetorical Device Analyzer - Pattern-Based Detection
 // Uses modular detectors to identify rhetorical devices in text
 
-import { detectAnaphora } from './detectors/anaphora.js';
 import { detectAlliteration } from './detectors/alliteration.js';
-import { detectRhetoricalQuestion } from './detectors/rhetorical-question.js';
-import { detectTricolon } from './detectors/tricolon.js';
-import { detectEpizeuxis } from './detectors/epizeuxis.js';
 
 // Array of all detector functions
 const DETECTORS = [
-    detectAnaphora,
-    detectAlliteration,
-    detectRhetoricalQuestion,
-    detectTricolon,
-    detectEpizeuxis
+    detectAlliteration
 ];
 
 export function analyzeText(text) {
