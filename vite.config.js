@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import { copyFileSync } from 'fs';
 
 export default defineConfig({
   build: {
@@ -12,13 +11,5 @@ export default defineConfig({
         guide: resolve(__dirname, 'guide.html')
       }
     }
-  },
-  plugins: [
-    {
-      name: 'copy-json',
-      closeBundle() {
-        copyFileSync('rhetoric-devices.json', 'dist/rhetoric-devices.json');
-      }
-    }
-  ]
+  }
 });
