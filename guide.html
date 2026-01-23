@@ -10,9 +10,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         .guide-container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
+        }
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        @media (max-width: 900px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        .column {
+            min-width: 0;
         }
         .tier {
             margin-bottom: 50px;
@@ -24,6 +38,34 @@
             margin-bottom: 20px;
             border-bottom: 2px solid #f9a826;
             padding-bottom: 10px;
+        }
+        .tier-header.implemented {
+            color: #4ade80;
+            border-bottom-color: #4ade80;
+        }
+        .tier-header.implementing-next {
+            color: #60a5fa;
+            border-bottom-color: #60a5fa;
+        }
+        .device.implemented {
+            border-left-color: #4ade80;
+            background: rgba(74, 222, 128, 0.05);
+        }
+        .device.implementing-next {
+            border-left-color: #60a5fa;
+            background: rgba(96, 165, 250, 0.05);
+        }
+        .device.implemented .device-name {
+            color: #4ade80;
+        }
+        .device.implementing-next .device-name {
+            color: #60a5fa;
+        }
+        .device.implemented .meta-label {
+            color: #4ade80;
+        }
+        .device.implementing-next .meta-label {
+            color: #60a5fa;
         }
         .device {
             background: rgba(249, 168, 38, 0.05);
@@ -89,20 +131,99 @@
         </div>
 
         <div class="guide-container">
-            <!-- TIER 1 -->
-            <div class="tier">
-                <h2 class="tier-header">TIER 1: High-Impact, Detectable (Start Here)</h2>
+            <!-- Two-column layout for Implemented and Implementing Next -->
+            <div class="two-column-layout">
+                <!-- Left Column: Implemented -->
+                <div class="column">
+                    <h2 class="tier-header implemented">IMPLEMENTED</h2>
 
-                <div class="device">
-                    <div class="device-name">Alliteration</div>
-                    <div class="device-definition">Repetition of initial consonant sounds in successive or neighboring words.</div>
-                    <div class="device-example">"Peter Piper picked a peck of pickled peppers"</div>
-                    <div class="device-meta">
-                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
-                        <div class="meta-item"><span class="meta-label">Method:</span> Phonetic algorithms (Metaphone/Soundex)</div>
-                        <div class="meta-item"><span class="meta-label">Challenges:</span> Silent letters, homophones, word boundary detection</div>
+                    <div class="device implemented">
+                        <div class="device-name">Alliteration</div>
+                        <div class="device-definition">Repetition of initial consonant sounds in successive or neighboring words.</div>
+                        <div class="device-example">"Peter Piper picked a peck of pickled peppers"</div>
+                        <div class="device-meta">
+                            <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                            <div class="meta-item"><span class="meta-label">Method:</span> Phonetic algorithms (Metaphone/Soundex)</div>
+                            <div class="meta-item"><span class="meta-label">Challenges:</span> Silent letters, homophones, word boundary detection</div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Right Column: Implementing Next -->
+                <div class="column">
+                    <h2 class="tier-header implementing-next">IMPLEMENTING NEXT</h2>
+
+                    <div class="device implementing-next">
+                        <div class="device-name">Anaphora</div>
+                        <div class="device-definition">Repetition of the same word or phrase at the beginning of successive clauses or sentences.</div>
+                        <div class="device-example">"We shall fight on the beaches. We shall fight on the landing grounds. We shall fight in the fields."</div>
+                        <div class="device-meta">
+                            <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                            <div class="meta-item"><span class="meta-label">Method:</span> NLP parsing + pattern matching on sentence/clause starts</div>
+                            <div class="meta-item"><span class="meta-label">Challenges:</span> Clause boundary detection, determining meaningful repetition length</div>
+                        </div>
+                    </div>
+
+                    <div class="device implementing-next">
+                        <div class="device-name">Epistrophe</div>
+                        <div class="device-definition">Repetition of the same word or phrase at the end of successive clauses or sentences.</div>
+                        <div class="device-example">"...government of the people, by the people, for the people"</div>
+                        <div class="device-meta">
+                            <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                            <div class="meta-item"><span class="meta-label">Method:</span> NLP parsing + pattern matching on sentence/clause ends</div>
+                            <div class="meta-item"><span class="meta-label">Challenges:</span> Similar to anaphora but at clause endings</div>
+                        </div>
+                    </div>
+
+                    <div class="device implementing-next">
+                        <div class="device-name">Epizeuxis</div>
+                        <div class="device-definition">Immediate repetition of a word with no others between, for emphasis or emotion.</div>
+                        <div class="device-example">"Never, never, never give up"</div>
+                        <div class="device-meta">
+                            <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                            <div class="meta-item"><span class="meta-label">Method:</span> Simple token matching (adjacent word detection)</div>
+                            <div class="meta-item"><span class="meta-label">Challenges:</span> Minimal - very straightforward pattern</div>
+                        </div>
+                    </div>
+
+                    <div class="device implementing-next">
+                        <div class="device-name">Anadiplosis</div>
+                        <div class="device-definition">Repetition where the last word of one clause becomes the first word of the next.</div>
+                        <div class="device-example">"Fear leads to anger. Anger leads to hate. Hate leads to suffering."</div>
+                        <div class="device-meta">
+                            <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
+                            <div class="meta-item"><span class="meta-label">Method:</span> Clause parsing + end-to-start matching</div>
+                            <div class="meta-item"><span class="meta-label">Challenges:</span> Handling punctuation, determining clause boundaries</div>
+                        </div>
+                    </div>
+
+                    <div class="device implementing-next">
+                        <div class="device-name">Tricolon</div>
+                        <div class="device-definition">Three parallel elements of approximately equal length appearing in succession.</div>
+                        <div class="device-example">"Government of the people, by the people, for the people"</div>
+                        <div class="device-meta">
+                            <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                            <div class="meta-item"><span class="meta-label">Method:</span> Isocolon detection + counting (must be exactly 3)</div>
+                            <div class="meta-item"><span class="meta-label">Challenges:</span> Same as isocolon, plus enforcing exactly three elements</div>
+                        </div>
+                    </div>
+
+                    <div class="device implementing-next">
+                        <div class="device-name">Rhetorical Question</div>
+                        <div class="device-definition">A question asked for effect or emphasis rather than to obtain information.</div>
+                        <div class="device-example">"Is the pope Catholic?"</div>
+                        <div class="device-meta">
+                            <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
+                            <div class="meta-item"><span class="meta-label">Method:</span> Question detection + heuristics (negative tags, obvious answers)</div>
+                            <div class="meta-item"><span class="meta-label">Challenges:</span> Context-dependent, requires understanding of implied answers</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIER 1 - Remaining devices -->
+            <div class="tier">
+                <h2 class="tier-header">TIER 1: Other High-Impact Devices</h2>
 
                 <div class="device">
                     <div class="device-name">Assonance</div>
@@ -127,50 +248,6 @@
                 </div>
 
                 <div class="device">
-                    <div class="device-name">Anaphora</div>
-                    <div class="device-definition">Repetition of the same word or phrase at the beginning of successive clauses or sentences.</div>
-                    <div class="device-example">"We shall fight on the beaches. We shall fight on the landing grounds. We shall fight in the fields."</div>
-                    <div class="device-meta">
-                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
-                        <div class="meta-item"><span class="meta-label">Method:</span> NLP parsing + pattern matching on sentence/clause starts</div>
-                        <div class="meta-item"><span class="meta-label">Challenges:</span> Clause boundary detection, determining meaningful repetition length</div>
-                    </div>
-                </div>
-
-                <div class="device">
-                    <div class="device-name">Epistrophe</div>
-                    <div class="device-definition">Repetition of the same word or phrase at the end of successive clauses or sentences.</div>
-                    <div class="device-example">"...government of the people, by the people, for the people"</div>
-                    <div class="device-meta">
-                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
-                        <div class="meta-item"><span class="meta-label">Method:</span> NLP parsing + pattern matching on sentence/clause ends</div>
-                        <div class="meta-item"><span class="meta-label">Challenges:</span> Similar to anaphora but at clause endings</div>
-                    </div>
-                </div>
-
-                <div class="device">
-                    <div class="device-name">Epizeuxis</div>
-                    <div class="device-definition">Immediate repetition of a word with no others between, for emphasis or emotion.</div>
-                    <div class="device-example">"Never, never, never give up"</div>
-                    <div class="device-meta">
-                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
-                        <div class="meta-item"><span class="meta-label">Method:</span> Simple token matching (adjacent word detection)</div>
-                        <div class="meta-item"><span class="meta-label">Challenges:</span> Minimal - very straightforward pattern</div>
-                    </div>
-                </div>
-
-                <div class="device">
-                    <div class="device-name">Anadiplosis</div>
-                    <div class="device-definition">Repetition where the last word of one clause becomes the first word of the next.</div>
-                    <div class="device-example">"Fear leads to anger. Anger leads to hate. Hate leads to suffering."</div>
-                    <div class="device-meta">
-                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-easy">EASY</span></div>
-                        <div class="meta-item"><span class="meta-label">Method:</span> Clause parsing + end-to-start matching</div>
-                        <div class="meta-item"><span class="meta-label">Challenges:</span> Handling punctuation, determining clause boundaries</div>
-                    </div>
-                </div>
-
-                <div class="device">
                     <div class="device-name">Isocolon</div>
                     <div class="device-definition">A series of parallel clauses or phrases of approximately equal length.</div>
                     <div class="device-example">"Veni, vidi, vici" (I came, I saw, I conquered)</div>
@@ -178,17 +255,6 @@
                         <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
                         <div class="meta-item"><span class="meta-label">Method:</span> NLP parsing + length comparison + structure matching</div>
                         <div class="meta-item"><span class="meta-label">Challenges:</span> Defining "equal length" (words vs syllables), detecting parallel structure</div>
-                    </div>
-                </div>
-
-                <div class="device">
-                    <div class="device-name">Tricolon</div>
-                    <div class="device-definition">Three parallel elements of approximately equal length appearing in succession.</div>
-                    <div class="device-example">"Government of the people, by the people, for the people"</div>
-                    <div class="device-meta">
-                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
-                        <div class="meta-item"><span class="meta-label">Method:</span> Isocolon detection + counting (must be exactly 3)</div>
-                        <div class="meta-item"><span class="meta-label">Challenges:</span> Same as isocolon, plus enforcing exactly three elements</div>
                     </div>
                 </div>
 
@@ -211,17 +277,6 @@
                         <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-hard">HARD</span></div>
                         <div class="meta-item"><span class="meta-label">Method:</span> Deep syntactic parsing + structure reversal detection</div>
                         <div class="meta-item"><span class="meta-label">Challenges:</span> Requires accurate POS tagging, handling syntactic variations</div>
-                    </div>
-                </div>
-
-                <div class="device">
-                    <div class="device-name">Rhetorical Question</div>
-                    <div class="device-definition">A question asked for effect or emphasis rather than to obtain information.</div>
-                    <div class="device-example">"Is the pope Catholic?"</div>
-                    <div class="device-meta">
-                        <div class="meta-item"><span class="meta-label">Difficulty:</span> <span class="difficulty difficulty-medium">MEDIUM</span></div>
-                        <div class="meta-item"><span class="meta-label">Method:</span> Question detection + heuristics (negative tags, obvious answers)</div>
-                        <div class="meta-item"><span class="meta-label">Challenges:</span> Context-dependent, requires understanding of implied answers</div>
                     </div>
                 </div>
             </div>
