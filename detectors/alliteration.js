@@ -8,7 +8,10 @@ import { metaphone } from 'metaphone';
 const FUNCTION_WORDS = new Set([
     'a', 'an', 'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'of', 'for',
     'with', 'by', 'from', 'as', 'is', 'was', 'are', 'were', 'be', 'been',
-    'have', 'has', 'had', 'it', 'its', 'that', 'this', 'these', 'those'
+    'have', 'has', 'had', 'it', 'its', 'that', 'this', 'these', 'those',
+    'we', 'us', 'our', 'you', 'your', 'he', 'she', 'they', 'them', 'their',
+    'can', 'could', 'will', 'would', 'shall', 'should', 'may', 'might', 'must',
+    'not', 'no'
 ]);
 
 /**
@@ -85,10 +88,17 @@ function detectAlliterationInSentence(sentence, sentenceStartIndex) {
         return results;
     }
 
-    // Sliding window to find alliteration clusters
+    // Sliding window to find CONSECUTIVE alliteration clusters
+    // Filter to content words only (skip function words)
+    const contentWords = words.filter(w => !FUNCTION_WORDS.has(w.text.toLowerCase()));
+
+    if (contentWords.length < 3) {
+        return results;
+    }
+
     let i = 0;
-    while (i < words.length) {
-        const currentWord = words[i];
+    while (i < contentWords.length - 2) {
+        const currentWord = contentWords[i];
         const consonantSound = getFirstConsonantSound(currentWord.text);
 
         // Skip if no consonant sound detected
@@ -97,19 +107,22 @@ function detectAlliterationInSentence(sentence, sentenceStartIndex) {
             continue;
         }
 
-        // Look ahead within a window of 8 words to find matching sounds
+        // Look for consecutive content words with the same starting sound
         const cluster = [currentWord];
 
-        for (let j = i + 1; j < Math.min(i + 8, words.length); j++) {
-            const nextWord = words[j];
+        for (let j = i + 1; j < contentWords.length; j++) {
+            const nextWord = contentWords[j];
             const nextSound = getFirstConsonantSound(nextWord.text);
 
             if (nextSound === consonantSound) {
                 cluster.push(nextWord);
+            } else {
+                // Stop at first non-matching content word (must be consecutive)
+                break;
             }
         }
 
-        // If we found 3+ alliterative words, record it
+        // If we found 3+ consecutive alliterative content words, record it
         if (cluster.length >= 3) {
             const firstWord = cluster[0];
             const lastWord = cluster[cluster.length - 1];
@@ -131,7 +144,7 @@ function detectAlliterationInSentence(sentence, sentenceStartIndex) {
             });
 
             // Skip past this cluster to avoid overlapping detections
-            i = words.indexOf(lastWord) + 1;
+            i += cluster.length;
         } else {
             i++;
         }
