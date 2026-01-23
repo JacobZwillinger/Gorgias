@@ -5,11 +5,15 @@ import { metaphone } from 'metaphone';
 const FUNCTION_WORDS = new Set([
     'a', 'an', 'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'of', 'for',
     'with', 'by', 'from', 'as', 'is', 'was', 'are', 'were', 'be', 'been',
-    'have', 'has', 'had', 'it', 'its', 'that', 'this', 'these', 'those'
+    'have', 'has', 'had', 'it', 'its', 'that', 'this', 'these', 'those',
+    'we', 'us', 'our', 'you', 'your', 'he', 'she', 'they', 'them', 'their',
+    'can', 'could', 'will', 'would', 'shall', 'should', 'may', 'might', 'must',
+    'not', 'no'
 ]);
 
 /**
  * Get the first consonant sound from a word using Metaphone
+ * Returns null for function words or vowel-initial words
  */
 function getFirstConsonantSound(word) {
     const lowerWord = word.toLowerCase();
@@ -29,6 +33,8 @@ function getFirstConsonantSound(word) {
 
 /**
  * Detect alliteration within a single sentence
+ * Requires 3+ consecutive content words with the same starting sound
+ * Allows at most 1 function word between alliterative content words
  */
 function detectAlliterationInSentence(sentence, sentenceStartIndex) {
     const results = [];
@@ -48,25 +54,52 @@ function detectAlliterationInSentence(sentence, sentenceStartIndex) {
         return results;
     }
 
+    // Sliding window to find CONSECUTIVE alliteration clusters
+    // Allow at most 1 function word between alliterative content words
+    const MAX_FUNCTION_WORDS_BETWEEN = 1;
+
     let i = 0;
-    while (i < words.length) {
+    while (i < words.length - 2) {
         const currentWord = words[i];
         const consonantSound = getFirstConsonantSound(currentWord.text);
 
+        // Skip if no consonant sound detected (function words or vowel-initial)
         if (!consonantSound) {
             i++;
             continue;
         }
 
+        // Look for consecutive words with the same starting sound
         const cluster = [currentWord];
-        for (let j = i + 1; j < Math.min(i + 8, words.length); j++) {
+        let j = i + 1;
+        let functionWordCount = 0;
+
+        while (j < words.length) {
             const nextWord = words[j];
             const nextSound = getFirstConsonantSound(nextWord.text);
+
+            if (nextSound === null) {
+                // Function word or vowel-initial
+                functionWordCount++;
+                if (functionWordCount > MAX_FUNCTION_WORDS_BETWEEN) {
+                    // Too many function words - break the chain
+                    break;
+                }
+                j++;
+                continue;
+            }
+
             if (nextSound === consonantSound) {
                 cluster.push(nextWord);
+                functionWordCount = 0; // Reset counter after finding a match
+                j++;
+            } else {
+                // Non-matching content word - stop here
+                break;
             }
         }
 
+        // If we found 3+ consecutive alliterative content words, record it
         if (cluster.length >= 3) {
             const firstWord = cluster[0];
             const lastWord = cluster[cluster.length - 1];
@@ -87,7 +120,8 @@ function detectAlliterationInSentence(sentence, sentenceStartIndex) {
                 }
             });
 
-            i = words.indexOf(lastWord) + 1;
+            // Skip past this cluster to avoid overlapping detections
+            i = j;
         } else {
             i++;
         }
