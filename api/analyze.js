@@ -11,8 +11,22 @@ const FUNCTION_WORDS = new Set([
     'not', 'no'
 ]);
 
+// Silent letter patterns - maps word prefixes to their actual starting sound
+const SILENT_LETTER_PATTERNS = [
+    { pattern: /^kn/i, sound: 'N' },    // knight, know, knee
+    { pattern: /^gn/i, sound: 'N' },    // gnome, gnat, gnaw
+    { pattern: /^pn/i, sound: 'N' },    // pneumonia
+    { pattern: /^ps/i, sound: 'S' },    // psychology, psalm
+    { pattern: /^pt/i, sound: 'T' },    // pterodactyl
+    { pattern: /^wr/i, sound: 'R' },    // write, wrong, wrist
+    { pattern: /^wh/i, sound: 'W' },    // what, where, when (treat as W)
+    { pattern: /^ph/i, sound: 'F' },    // phone, philosophy
+    { pattern: /^rh/i, sound: 'R' },    // rhetoric, rhyme
+];
+
 /**
- * Get the first consonant sound from a word using Metaphone
+ * Get the first consonant sound from a word
+ * Uses the actual starting letter, with special handling for silent letters
  * Returns null for function words or vowel-initial words
  */
 function getFirstConsonantSound(word) {
@@ -20,15 +34,23 @@ function getFirstConsonantSound(word) {
     if (FUNCTION_WORDS.has(lowerWord)) {
         return null;
     }
-    const phonetic = metaphone(word);
-    if (!phonetic || phonetic.length === 0) {
+
+    // Check for silent letter patterns
+    for (const { pattern, sound } of SILENT_LETTER_PATTERNS) {
+        if (pattern.test(lowerWord)) {
+            return sound;
+        }
+    }
+
+    // Use the actual first letter
+    const firstLetter = lowerWord[0].toUpperCase();
+
+    // Skip vowel-initial words
+    if (['A', 'E', 'I', 'O', 'U'].includes(firstLetter)) {
         return null;
     }
-    const firstSound = phonetic[0].toUpperCase();
-    if (['A', 'E', 'I', 'O', 'U'].includes(firstSound)) {
-        return null;
-    }
-    return firstSound;
+
+    return firstLetter;
 }
 
 /**
