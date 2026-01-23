@@ -16,7 +16,7 @@ const SAMPLE_TEXTS = {
 // Device example texts (synthetic examples demonstrating specific devices)
 const DEVICE_EXAMPLES = {
     // TIER 1
-    alliteration: `Peter Piper picked a peck of pickled peppers perfectly. An apple and an orange sat alone. The brave bold boys battled bravely beyond belief. Time flies like an arrow. Phil's phonetic phrases favor fantastic philosophy. The knight knew nothing new about navigation. Garry's gregarious grandfather greatly enjoyed gorgeous green gardens. A big bird sang. Clever cats carefully catch crafty crows and cunning crickets consistently. Silent letters make no sense.`,
+    alliteration: `Peter Piper picked a peck of pickled peppers perfectly. An apple and an orange sat alone. The brave bold boys battled bravely beyond belief. Time flies like an arrow. Phil's phonetic phrases favor fantastic philosophy. The knight knew nothing new about navigation. Garry's gregarious grandfather greatly enjoyed gorgeous green gardens. A big bird sang. Clever cats carefully catch crafty crows and cunning crickets consistently. Silent letters make no sense. We can not dedicate, we can not consecrate, we can not hallow this ground. Government of the people, by the people, for the people, shall not perish from the earth.`,
 
     assonance: `The rain in Spain stays mainly in the plain. How now brown cow. Fleet feet sweep by sleeping geese. We need to feel the real heat.`,
 
