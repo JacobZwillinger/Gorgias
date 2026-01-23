@@ -13,7 +13,7 @@ const FUNCTION_WORDS = new Set([
 
 // Silent letter patterns - maps word prefixes to their actual starting sound
 const SILENT_LETTER_PATTERNS = [
-    { pattern: /^kn/i, sound: 'N' },    // knight, know, knee
+    { pattern: /^kn/i, sound: 'K' },    // knight, know, knee
     { pattern: /^gn/i, sound: 'N' },    // gnome, gnat, gnaw
     { pattern: /^pn/i, sound: 'N' },    // pneumonia
     { pattern: /^ps/i, sound: 'S' },    // psychology, psalm
@@ -23,6 +23,13 @@ const SILENT_LETTER_PATTERNS = [
     { pattern: /^ph/i, sound: 'F' },    // phone, philosophy
     { pattern: /^rh/i, sound: 'R' },    // rhetoric, rhyme
 ];
+
+// Sound equivalence - letters that typically make the same sound
+const SOUND_EQUIVALENCE = {
+    'C': 'K',   // "cat" and "kite" alliterate
+    'K': 'K',
+    'Q': 'K',   // "queen" starts with K sound
+};
 
 /**
  * Get the first consonant sound from a word
@@ -50,7 +57,8 @@ function getFirstConsonantSound(word) {
         return null;
     }
 
-    return firstLetter;
+    // Apply sound equivalence mapping
+    return SOUND_EQUIVALENCE[firstLetter] || firstLetter;
 }
 
 /**
