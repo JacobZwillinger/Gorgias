@@ -89,35 +89,46 @@ function detectAlliterationInSentence(sentence, sentenceStartIndex) {
     }
 
     // Sliding window to find CONSECUTIVE alliteration clusters
-    // Filter to content words only (skip function words)
-    const contentWords = words.filter(w => !FUNCTION_WORDS.has(w.text.toLowerCase()));
-
-    if (contentWords.length < 3) {
-        return results;
-    }
+    // Allow at most 1 function word between alliterative content words
+    const MAX_FUNCTION_WORDS_BETWEEN = 1;
 
     let i = 0;
-    while (i < contentWords.length - 2) {
-        const currentWord = contentWords[i];
+    while (i < words.length - 2) {
+        const currentWord = words[i];
         const consonantSound = getFirstConsonantSound(currentWord.text);
 
-        // Skip if no consonant sound detected
+        // Skip if no consonant sound detected (function words or vowel-initial)
         if (!consonantSound) {
             i++;
             continue;
         }
 
-        // Look for consecutive content words with the same starting sound
+        // Look for consecutive words with the same starting sound
         const cluster = [currentWord];
+        let j = i + 1;
+        let functionWordCount = 0;
 
-        for (let j = i + 1; j < contentWords.length; j++) {
-            const nextWord = contentWords[j];
+        while (j < words.length) {
+            const nextWord = words[j];
             const nextSound = getFirstConsonantSound(nextWord.text);
+
+            if (nextSound === null) {
+                // Function word or vowel-initial
+                functionWordCount++;
+                if (functionWordCount > MAX_FUNCTION_WORDS_BETWEEN) {
+                    // Too many function words - break the chain
+                    break;
+                }
+                j++;
+                continue;
+            }
 
             if (nextSound === consonantSound) {
                 cluster.push(nextWord);
+                functionWordCount = 0; // Reset counter after finding a match
+                j++;
             } else {
-                // Stop at first non-matching content word (must be consecutive)
+                // Non-matching content word - stop here
                 break;
             }
         }
@@ -144,7 +155,7 @@ function detectAlliterationInSentence(sentence, sentenceStartIndex) {
             });
 
             // Skip past this cluster to avoid overlapping detections
-            i += cluster.length;
+            i = j;
         } else {
             i++;
         }
