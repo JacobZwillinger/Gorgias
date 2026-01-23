@@ -3,12 +3,13 @@
 // Handles silent letters, homophones, and function word filtering
 
 // Function words to skip when detecting alliteration
+// Note: "can", "will", "may" removed as they can be nouns (tin can, a will, the month May)
 const FUNCTION_WORDS = new Set([
     'a', 'an', 'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'of', 'for',
     'with', 'by', 'from', 'as', 'is', 'was', 'are', 'were', 'be', 'been',
     'have', 'has', 'had', 'it', 'its', 'that', 'this', 'these', 'those',
     'we', 'us', 'our', 'you', 'your', 'he', 'she', 'they', 'them', 'their',
-    'can', 'could', 'will', 'would', 'shall', 'should', 'may', 'might', 'must',
+    'could', 'would', 'shall', 'should', 'might', 'must',
     'not', 'no'
 ]);
 
