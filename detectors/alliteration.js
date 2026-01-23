@@ -94,13 +94,18 @@ function detectAlliterationInSentence(sentence, sentenceStartIndex) {
     const results = [];
 
     // Extract words with their positions in original text
-    const wordPattern = /\b[a-zA-Z]+\b/g;
+    // Include possessive 's as part of the word to avoid splitting "William's" into "William" and "s"
+    const wordPattern = /\b[a-zA-Z]+(?:'s)?\b/g;
     const words = [];
     let match;
 
     while ((match = wordPattern.exec(sentence)) !== null) {
+        // Strip possessive 's for sound comparison but keep original for display
+        const rawWord = match[0];
+        const textForSound = rawWord.replace(/'s$/i, '');
         words.push({
-            text: match[0],
+            text: textForSound,
+            rawText: rawWord,
             startIndex: sentenceStartIndex + match.index,
             endIndex: sentenceStartIndex + match.index + match[0].length
         });
